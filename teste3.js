@@ -2,14 +2,12 @@ var data =  require("./fakeData");
 
 module.exports = function(req, res) {
   
-    var name =  req.query.name;
+    const name = req.query.name;
+    const index = data.findIndex(user => user.name === name);
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            data[i] = null;
-        }
+    if(index !== -1) {
+        data.splice(index, 1);
     }
-
+    
     res.send("success");
-
 };

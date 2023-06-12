@@ -1,13 +1,16 @@
 var data =  require("./fakeData");
 
-module.exports =  function(req, res) {
-  
-    var id =  req.query.id;
+module.exports = (req, res) => {
+    const id = req.query.id;
+    const { name, job } = req.body;
 
-    const reg = data.find(d => id == id);
-    reg.name = req.body.name;
-    reg.job = req.body.job;
+    let reg = data.find(d => d.id == id);
 
-    res.send(reg);
-
+    if(reg) {
+        reg.name = name;
+        reg.job = job;
+        res.send(reg);
+    } else {
+        res.status(404).send({ error: "Registro não encontrado" });
+    }
 };

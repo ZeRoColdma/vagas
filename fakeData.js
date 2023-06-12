@@ -3,8 +3,10 @@ const fakeData  =  [
     {
         id: 1,
         name: "João Oliveira",
-        job: "Desenvolvedor"
-    }
+        job: "Desenvolvedor",
+        access: 1,
+        admin: false
+    },
 ]
 
 
